@@ -73,12 +73,14 @@ function CreateESP(Character)
 end
 
 function UpdateESP()
+    local InRange = 0
     for _, Player in ipairs(Players:GetPlayers()) do
         if Player ~= LocalPlayer and Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
             local HRP = Player.Character.HumanoidRootPart
             local Distance = (HRP.Position - LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
 
             if Distance <= ESPDistance then
+                InRange += 1
                 CreateESP(Player.Character)
 
                 local Highlight = ESPObjects[Player.Character]
@@ -108,6 +110,7 @@ function UpdateESP()
             end
         end
     end
+    PlayersRange:Set("Players in Range: "..tostring(InRange))
 end
 
 
@@ -176,6 +179,8 @@ local ESP_Distance = ESPTab:CreateSlider({
    end;
    SectionParent = ESP_Section_Settings;
 })
+
+PlayersRange = ESPTab:CreateLabel("Players in Range: nil")
 
 local ESP_FillTransparency = ESPTab:CreateSlider({
    Name = "Fill Transparency",
