@@ -1,3 +1,6 @@
+if workspace:GetAttribute("DefinitelyHubLoaded") == true then return end
+workspace:SetAttribute("DefinitelyHubLoaded",true)
+
 local ArrayField = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/ArrayField/main/Source.lua'))()
 
 local Window = ArrayField:CreateWindow({
