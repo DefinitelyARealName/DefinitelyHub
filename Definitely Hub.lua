@@ -38,6 +38,8 @@ local Window = ArrayField:CreateWindow({
 })
 
 local ESPTab = Window:CreateTab("ESP", 4483362458)
+local MiscTab = Window:CreateTab("Misc", 753015087)
+
 local ESP_Section_Settings = ESPTab:CreateSection("Settings",false)
 local ESP_Section_Info = ESPTab:CreateSection("Info",false)
 local ESP_Section_Overwrite = ESPTab:CreateSection("Overwrite",false)
@@ -546,5 +548,14 @@ RunService.RenderStepped:Connect(function()
 		ClearAllInfo()
 	end
 end)
+
+local JoinVC = MiscTab:CreateButton({
+   Name = "Join VC",
+   Interact = 'Click',
+   Callback = function()
+		   voiceChatService = game:GetService("VoiceChatService")
+			 voiceChatService:joinVoice()
+   end,
+})
 
 ArrayField:LoadConfiguration()
